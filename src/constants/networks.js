@@ -22,12 +22,12 @@ export const RINKEBY_CONFIG = {
   bridge: '0x59557241da46d72E301a1611322c7b638E0b12BE',
   // eslint-disable-next-line no-warning-comments
   // TODO @MRWHO
-  allowTokens: '0x92BF86334583909B60F9b798A9Dd7Debd899fEc4',
+  allowTokens: '0xD92E713d051C37EbB2561803a3b5FBAbc4962431',
   //TODO @MRWHO
-  federation: '0xa347438BC288f56Cb6083A79133e70DD2d1f6c2d',
+  federation: '0xB640958774b4b2D02aDE634761b7417b42b7FDB9',
   explorer: 'https://rinkeby.etherscan.io',
   explorerTokenTab: '#tokentxns',
-  secondsPerBlock: 5,
+  secondsPerBlock: 15,
   rpc: `https://rinkeby.infura.io/v3/${process.env.VUE_APP_INFURA_KEY}`,
   v2UpdateBlock: 25547922,
   feePercentageDivider: 10_000,
@@ -57,13 +57,13 @@ export const RESIL_TESTNET_CONFIG = {
   localStorageName: 'resil-testnet',
   bridge: '0x09b75316259ca5a090697Ef581a4245aabdEB415',
   //TODO @MRWHO
-  allowTokens: '0xc65bf0ae75dc1a5fc9e6f4215125692a548c773a',
+  allowTokens: '',
   //TODO @MRWHO
-  federation: '0x5d663981d930e8ec108280b9d80885658148ab0f',
+  federation: '0xdfe01367319997AF1bA780d12902Ab6BA6ed26C5',
   explorer: 'https://explorer.latam-blockchain.com',
   explorerTokenTab: '?__tab=tokens%20transfers',
   //TODO @MRWHO
-  secondsPerBlock: 30,
+  secondsPerBlock: 5,
   rpc: 'https://rpc.latam-blockchain.com',
   //TODO @MRWHO
   v2UpdateBlock: 1945524,
