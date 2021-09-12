@@ -15,6 +15,25 @@ export const KOVAN_CONFIG = {
   isRsk: false,
   isEth: true,
 }
+export const RINKEBY_CONFIG = {
+  networkId: 4,
+  name: 'Rinkeby',
+  localStorageName: 'ethereum-rinkeby',
+  bridge: '0x59557241da46d72E301a1611322c7b638E0b12BE',
+  // eslint-disable-next-line no-warning-comments
+  // TODO @MRWHO
+  allowTokens: '0x92BF86334583909B60F9b798A9Dd7Debd899fEc4',
+  //TODO @MRWHO
+  federation: '0xa347438BC288f56Cb6083A79133e70DD2d1f6c2d',
+  explorer: 'https://rinkeby.etherscan.io',
+  explorerTokenTab: '#tokentxns',
+  secondsPerBlock: 5,
+  rpc: `https://rinkeby.infura.io/v3/${process.env.VUE_APP_INFURA_KEY}`,
+  v2UpdateBlock: 25547922,
+  feePercentageDivider: 10_000,
+  isRsk: false,
+  isEth: true,
+}
 export const RSK_TESTNET_CONFIG = {
   networkId: 31,
   name: 'RSK Testnet',
@@ -28,11 +47,33 @@ export const RSK_TESTNET_CONFIG = {
   rpc: 'https://public-node.testnet.rsk.co',
   v2UpdateBlock: 1945524,
   feePercentageDivider: 10_000,
-  crossToNetwork: KOVAN_CONFIG,
+  crossToNetwork: RINKEBY_CONFIG,
   isRsk: true,
   isEth: false,
 }
-KOVAN_CONFIG.crossToNetwork = RSK_TESTNET_CONFIG
+export const RESIL_TESTNET_CONFIG = {
+  networkId: 31,
+  name: 'Resil Testnet',
+  localStorageName: 'resil-testnet',
+  bridge: '0x09b75316259ca5a090697Ef581a4245aabdEB415',
+  //TODO @MRWHO
+  allowTokens: '0xc65bf0ae75dc1a5fc9e6f4215125692a548c773a',
+  //TODO @MRWHO
+  federation: '0x5d663981d930e8ec108280b9d80885658148ab0f',
+  explorer: 'https://explorer.latam-blockchain.com',
+  explorerTokenTab: '?__tab=tokens%20transfers',
+  //TODO @MRWHO
+  secondsPerBlock: 30,
+  rpc: 'https://rpc.latam-blockchain.com',
+  //TODO @MRWHO
+  v2UpdateBlock: 1945524,
+  //TODO @MRWHO
+  feePercentageDivider: 10_000,
+  crossToNetwork: RINKEBY_CONFIG,
+  isRsk: true,
+  isEth: false,
+}
+RINKEBY_CONFIG.crossToNetwork = RESIL_TESTNET_CONFIG
 
 // Replace with proper values contracts exist in mainnet
 export const ETH_CONFIG = {
@@ -72,7 +113,9 @@ ETH_CONFIG.crossToNetwork = RSK_MAINNET_CONFIG
 
 export const NETWORKS = {
   31: RSK_TESTNET_CONFIG,
+  172: RESIL_TESTNET_CONFIG,
   30: RSK_MAINNET_CONFIG,
   42: KOVAN_CONFIG,
+  4: RINKEBY_CONFIG,
   1: ETH_CONFIG,
 }

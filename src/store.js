@@ -6,8 +6,10 @@ import RLogin from '@rsksmart/rlogin'
 import WalletConnectProvider from '@walletconnect/web3-provider'
 
 import {
-  KOVAN_CONFIG,
-  RSK_TESTNET_CONFIG,
+  //KOVAN_CONFIG,
+  RINKEBY_CONFIG,
+  //RSK_TESTNET_CONFIG,
+  RESIL_TESTNET_CONFIG,
   ETH_CONFIG,
   RSK_MAINNET_CONFIG,
 } from '@/constants/networks.js'
@@ -34,8 +36,8 @@ const rpcTestnet = {
 const supportedChainsTestnet = [42, 31]
 
 const isTestnet = !(process.env.VUE_APP_IS_MAINNET == 'true')
-const rskConfig = isTestnet ? RSK_TESTNET_CONFIG : RSK_MAINNET_CONFIG
-const ethConfig = isTestnet ? KOVAN_CONFIG : ETH_CONFIG
+const rskConfig = isTestnet ? RESIL_TESTNET_CONFIG : RSK_MAINNET_CONFIG
+const ethConfig = isTestnet ? RINKEBY_CONFIG : ETH_CONFIG
 const tokens = TOKENS.filter(x => {
   return x[rskConfig.networkId] && x[ethConfig.networkId]
 }).sort((first, second) => first.typeId - second.typeId)
