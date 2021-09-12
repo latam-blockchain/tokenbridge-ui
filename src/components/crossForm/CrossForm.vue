@@ -184,14 +184,6 @@
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="offset-md-2 col-md-8 col-12">
-          <p v-if="destinationNetwork.isRsk" class="alert alert-warning" role="alert">
-            Binance is not taking deposits sent by a smart contract for RSK network, they only
-            accept deposits from an account
-          </p>
-        </div>
-      </div>
     </div>
     <div v-if="claimCost" class="row justify-content-center mb-4">
       <div class="col-sm-12 col-md-5 border note-container px-4 py-2 bg-light text-center">
