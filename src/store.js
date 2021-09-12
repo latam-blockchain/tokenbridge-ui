@@ -26,14 +26,19 @@ const rpcMainnet = {
 }
 const supportedChainsMainnet = [1, 30]
 
-const rskTestnetUri = 'https://public-node.testnet.rsk.co'
-const kovanUri = `https://kovan.infura.io/v3/${infuraKey}`
+//const rskTestnetUri = 'https://public-node.testnet.rsk.co'
+const resilTestnetUri = 'https://rpc.latam-blockchain.com'
+
+//const kovanUri = `https://kovan.infura.io/v3/${infuraKey}`
+const rinkebyUri = `https://rinkeby.infura.io/v3/${infuraKey}`
 
 const rpcTestnet = {
-  42: kovanUri,
-  31: rskTestnetUri,
+  //42: kovanUri,
+  4: rinkebyUri,
+  //31: rskTestnetUri,
+  172: resilTestnetUri,
 }
-const supportedChainsTestnet = [42, 31]
+const supportedChainsTestnet = [4, 172]
 
 const isTestnet = !(process.env.VUE_APP_IS_MAINNET == 'true')
 const rskConfig = isTestnet ? RESIL_TESTNET_CONFIG : RSK_MAINNET_CONFIG
@@ -67,8 +72,8 @@ export const store = {
     accountAddress: '',
     currentConfig: null,
     chainId: null,
-    rskWeb3: isTestnet ? new Web3(rskTestnetUri) : new Web3(rskMainnetUri),
-    ethWeb3: isTestnet ? new Web3(kovanUri) : new Web3(ethMainnetUri),
+    rskWeb3: isTestnet ? new Web3(resilTestnetUri) : new Web3(rskMainnetUri),
+    ethWeb3: isTestnet ? new Web3(rinkebyUri) : new Web3(ethMainnetUri),
     rskConfig: rskConfig,
     ethConfig: ethConfig,
     tokens: tokens,
@@ -137,17 +142,17 @@ export const store = {
   async getGasPriceHex() {
     const state = store.state
     const web3 = state.web3
-    const config = state.currentConfig
+    //const config = state.currentConfig
     var gasPriceParsed = 0
-    if (config.networkId >= 30 && config.networkId <= 33) {
-      const block = await web3.eth.getBlock('latest')
-      gasPriceParsed = parseInt(block.minimumGasPrice)
-      gasPriceParsed = gasPriceParsed <= 1 ? 1 : gasPriceParsed * 1.03
-    } else {
+    // if (config.networkId >= 30 && config.networkId <= 33) {
+    //   const block = await web3.eth.getBlock('latest')
+    //   gasPriceParsed = parseInt(block.minimumGasPrice)
+    //   gasPriceParsed = gasPriceParsed <= 1 ? 1 : gasPriceParsed * 1.03
+    // } else {
       const gasPriceAvg = await web3.eth.getGasPrice()
       gasPriceParsed = parseInt(gasPriceAvg)
       gasPriceParsed = gasPriceParsed <= 1 ? 1 : gasPriceParsed * 1.3
-    }
+    //}
     return `0x${Math.ceil(gasPriceParsed).toString(16)}`
   },
 }
